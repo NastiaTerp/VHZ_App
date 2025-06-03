@@ -1,0 +1,162 @@
+html {
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+/* Стили для шапки */
+.navbar {
+    padding: 0.5rem 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Стили для бокового меню */
+.offcanvas {
+    width: 250px;
+}
+/* Стили для кнопки меню */
+.navbar-toggler {
+    border: none;
+    padding: 0.25rem 0.5rem;
+}
+
+    .navbar-toggler:focus {
+        box-shadow: none;
+    }
+
+/* Боковое меню */
+.offcanvas {
+    width: 280px;
+    background-color: #f8f9fa;
+}
+
+.offcanvas-body .nav-link {
+    padding: 0.75rem 1rem;
+    font-weight: 500;
+    border-bottom: 1px solid #eee;
+}
+
+    .offcanvas-body .nav-link:hover {
+        background-color: #e9ecef;
+    }
+/* Стили для иконок */
+.navbar .nav-link i {
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.navbar .nav-link:hover i {
+    transform: scale(1.15);
+    opacity: 0.9;
+}
+
+/* Основные стили для правильного позиционирования */
+body {
+    margin: 0;
+    padding-bottom: 120px;
+}
+
+/* Стили подвала */
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    background-color: #DCD1FF;
+    padding: 1rem 0;
+}
+/* Стили для кнопки меню (под иконки) */
+.navbar .btn-menu {
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0 0.5rem;
+    line-height: 1;
+}
+/* Стили для полноразмерного изображения */
+.full-width-image {
+    width: 100%;
+    overflow: hidden;
+}
+
+    .full-width-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover; /* Для сохранения пропорций */
+        min-height: 300px; /* Минимальная высота (настройте по необходимости) */
+    }
+
+/* Для контроля высоты на больших экранах */
+@media (min-width: 992px) {
+    .full-width-image img {
+        max-height: 80vh; /* Ограничение высоты */
+    }
+}
+/* Единые стили для всех иконок в шапке */
+.navbar .nav-link,
+.navbar .btn-menu {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+}
+
+    .navbar .nav-link i,
+    .navbar .btn-menu i {
+        font-size: 1.5rem;
+        color: #333;
+        transition: all 0.3s ease;
+    }
+
+    .navbar .nav-link:hover i,
+    .navbar .btn-menu:hover i {
+        transform: scale(1.15);
+        color: #000;
+    }
+/* Основное содержимое */
+main {
+    padding-bottom: 2rem; /* Отступ от подвала */
+}
+
+.footer-logo-img {
+    height: 90px;
+    width: auto;
+    transition: all 0.3s ease;
+}
+
+    .footer-logo-img:hover {
+        opacity: 0.9;
+        transform: scale(1.02);
+    }
+
+.footer p {
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+}
+
+.footer .container {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.navbar-brand img {
+    height: 60px;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}

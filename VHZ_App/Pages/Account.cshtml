@@ -1,0 +1,39 @@
+﻿@page
+@model VHZ_App.Pages.AccountModel
+@{
+    Layout = null;
+    ViewData["Title"] = "Личный кабинет";
+}
+
+<link href="~/css/account.css" rel="stylesheet" />
+
+<div class="auth-container">
+    <div class="auth-left">
+        <img src="/Image/logo.svg" alt="ВХЗ Логотип" class="logo" />
+    </div>
+    <div class="auth-right">
+        <h2 class="title">Личный кабинет</h2>
+        <p class="subtitle">Авторизация</p>
+
+        <form method="post">
+            <div class="form-group">
+                <input type="text" name="Login" placeholder="Логин" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="password" name="Password" placeholder="Пароль" class="form-control password" />
+            </div>
+            <button type="submit" class="btn-login">Войти</button>
+        </form>
+
+        <div class="auth-links">
+            <a href="#">Забыли пароль?</a>
+        </div>
+        <div class="register-link">
+            Нет аккаунта? <a href="/Register">Пройдите регистрацию</a>
+        </div>
+
+        <footer class="footer">
+            © 2025 ВХЗ. Все права защищены.
+        </footer>
+    </div>
+</div>

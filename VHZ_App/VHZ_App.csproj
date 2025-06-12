@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <Content Remove="wwwroot\Image\Главное.png" />
+    <Content Remove="wwwroot\Image\Главное2.png" />
+    <Content Remove="wwwroot\Image\Главное3.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -15,8 +17,23 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.6">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.6">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="wwwroot\Image\logo.svg" />
     <Resource Include="wwwroot\Image\Главное.png" />
+    <Resource Include="wwwroot\Image\Главное2.png" />
+    <Resource Include="wwwroot\Image\Главное3.png" />
   </ItemGroup>
 
 </Project>

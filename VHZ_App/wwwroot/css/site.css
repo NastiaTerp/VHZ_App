@@ -1,40 +1,82 @@
+/* Why Us Section Styles */
+.why-us-container {
+    background-color: #f8f9fa;
+}
+
+.why-us-item {
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    height: 100%;
+    transition: transform 0.3s ease;
+}
+
+    .why-us-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+.why-us-icon {
+    color: #3401BB;
+}
+
+.why-us-item h4 {
+    color: #343a40;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.why-us-item p {
+    color: #6c757d;
+    font-size: 0.9rem;
+    margin-bottom: 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .why-us-item {
+        padding: 15px;
+    }
+
+    .why-us-icon {
+        font-size: 1.5rem;
+    }
+}
+
+/* Base Styles */
 html {
     font-size: 14px;
     position: relative;
     min-height: 100%;
+    min-width: 320px;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+body {
+    margin: 0;
+    padding-bottom: 120px;
+    min-height: 100vh;
+    position: relative;
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+/* Header Styles */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-/* Стили для шапки */
 .navbar {
     padding: 0.5rem 1rem;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: #DCD1FF;
 }
 
-/* Стили для бокового меню */
-.offcanvas {
-    width: 250px;
-}
-/* Стили для кнопки меню */
-.navbar-toggler {
-    border: none;
-    padding: 0.25rem 0.5rem;
+.navbar-brand img {
+    height: 60px;
 }
 
-    .navbar-toggler:focus {
-        box-shadow: none;
-    }
-
-/* Боковое меню */
+/* Offcanvas Menu */
 .offcanvas {
     width: 280px;
     background-color: #f8f9fa;
@@ -46,27 +88,7 @@ html {
     border-bottom: 1px solid #eee;
 }
 
-    .offcanvas-body .nav-link:hover {
-        background-color: #e9ecef;
-    }
-/* Стили для иконок */
-.navbar .nav-link i {
-    font-size: 1.5rem;
-    transition: all 0.3s ease;
-}
-
-.navbar .nav-link:hover i {
-    transform: scale(1.15);
-    opacity: 0.9;
-}
-
-/* Основные стили для правильного позиционирования */
-body {
-    margin: 0;
-    padding-bottom: 120px;
-}
-
-/* Стили подвала */
+/* Footer Styles */
 .footer {
     position: absolute;
     bottom: 0;
@@ -75,60 +97,6 @@ body {
     background-color: #DCD1FF;
     padding: 1rem 0;
 }
-/* Стили для кнопки меню (под иконки) */
-.navbar .btn-menu {
-    background: transparent;
-    border: none;
-    padding: 0;
-    margin: 0 0.5rem;
-    line-height: 1;
-}
-/* Стили для полноразмерного изображения */
-.full-width-image {
-    width: 100%;
-    overflow: hidden;
-}
-
-    .full-width-image img {
-        width: 100%;
-        height: auto;
-        display: block;
-        object-fit: cover; /* Для сохранения пропорций */
-        min-height: 300px; /* Минимальная высота (настройте по необходимости) */
-    }
-
-/* Для контроля высоты на больших экранах */
-@media (min-width: 992px) {
-    .full-width-image img {
-        max-height: 80vh; /* Ограничение высоты */
-    }
-}
-/* Единые стили для всех иконок в шапке */
-.navbar .nav-link,
-.navbar .btn-menu {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 2rem;
-    height: 2rem;
-}
-
-    .navbar .nav-link i,
-    .navbar .btn-menu i {
-        font-size: 1.5rem;
-        color: #333;
-        transition: all 0.3s ease;
-    }
-
-    .navbar .nav-link:hover i,
-    .navbar .btn-menu:hover i {
-        transform: scale(1.15);
-        color: #000;
-    }
-/* Основное содержимое */
-main {
-    padding-bottom: 2rem; /* Отступ от подвала */
-}
 
 .footer-logo-img {
     height: 90px;
@@ -136,27 +104,67 @@ main {
     transition: all 0.3s ease;
 }
 
-    .footer-logo-img:hover {
-        opacity: 0.9;
-        transform: scale(1.02);
+/* Image Container Styles */
+.image-container {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: center;
+    background-color: #f8f9fa;
+    overflow: hidden;
+    margin: 0 auto 2rem;
+    padding: 0 15px;
+}
+
+.responsive-image {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Arrow Navigation */
+.arrow-left, .arrow-right {
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+    .arrow-left:hover, .arrow-right:hover {
+        transform: scale(1.1);
+        background-color: #f8f9fa !important;
     }
 
-.footer p {
-    margin-bottom: 0.75rem;
-    line-height: 1.6;
+/* Responsive Adjustments */
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
 }
 
-.footer .container {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+@media (max-width: 768px) {
+    .arrow-left, .arrow-right {
+        padding: 5px;
+    }
+
+        .arrow-left svg, .arrow-right svg {
+            width: 18px;
+            height: 18px;
+        }
 }
 
-.navbar-brand img {
-    height: 60px;
-}
-
-header {
-    position: sticky;
+/* Window Size Warning */
+.size-warning {
+    display: none;
+    position: fixed;
     top: 0;
-    z-index: 1000;
+    left: 0;
+    right: 0;
+    background: #ffeb3b;
+    padding: 10px;
+    text-align: center;
+    z-index: 9999;
+}
+
+@media (max-width: 319px), (max-height: 479px) {
+    .size-warning {
+        display: block;
+    }
 }

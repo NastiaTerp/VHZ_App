@@ -1,0 +1,48 @@
+﻿@page
+@model VHZ_App.Pages.RegisterModel
+@{
+    Layout = null;
+    ViewData["Title"] = "Регистрация";
+}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/register.css" />
+</head>
+<body>
+    <div class="register-wrapper">
+        <!-- Левая часть -->
+        <div class="left-panel">
+            <img src="/Image/logo.svg" alt="ВХЗ Логотип" class="logo" />
+        </div>
+
+        <!-- Правая часть -->
+        <div class="right-panel">
+            <h2>Регистрация</h2>
+            <p>Введите свои данные ниже.</p>
+            <form method="post">
+                <div class="form-section">
+                    <input class="form-control" name="CompanyFull" placeholder="Полное название компании" required />
+                    <input class="form-control" name="INN" placeholder="ИНН" pattern="\d{10}|\d{12}" title="ИНН должен содержать 10 или 12 цифр" required />
+                    <input class="form-control" name="KPP" placeholder="КПП" pattern="\d{9}" title="КПП должен содержать 9 цифр" required />
+                    <input class="form-control" name="Name" placeholder="Имя" required />
+                    <input class="form-control" name="Surname" placeholder="Фамилия" required />
+                    <input class="form-control" name="Pathronimic" placeholder="Отчество" required />
+                    <input class="form-control" name="Position" placeholder="Должность" required />
+                    <input class="form-control" name="Email" placeholder="Адрес эл. почты" type="email" required />
+                    <input class="form-control" name="Phone" placeholder="Телефон" type="tel" pattern="\+?[0-9\s\-\(\)]{7,20}" title="Введите корректный номер телефона" required />
+                    <input class="form-control" name="Login" placeholder="Логин" minlength="4" required />
+                    <input type="password" class="form-control" name="Password" placeholder="Пароль" minlength="6" required />
+                    <input type="password" class="form-control" name="ConfirmPassword" placeholder="Подтверждение пароля" required />
+                </div>
+                <button type="submit" class="btn btn-submit">Продолжить</button>
+            </form>
+            <div class="footer-text">© 2025 ВХЗ. Все права защищены.</div>
+        </div>
+    </div>
+</body>
+</html>

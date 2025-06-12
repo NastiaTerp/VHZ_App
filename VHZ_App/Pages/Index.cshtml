@@ -4,14 +4,116 @@
     ViewData["Title"] = "Владимирский химический завод";
 }
 
-<div class="container-fluid px-0">
-    <div class="full-width-image">
-        <img src="~/Image/Главное.png" alt="Владимирский химический завод" class="img-fluid w-100">
+<div class="container-fluid px-0 position-relative mt-4">
+    <div class="image-container mx-auto px-3">
+        <img id="mainImage" src="/Image/Главное.png" alt="Владимирский химический завод" class="responsive-image">
+    </div>
+
+    <div class="position-absolute top-50 start-0 translate-middle-y ms-3" style="cursor: pointer; z-index: 100;">
+        <div class="arrow-left bg-white p-2 rounded-circle shadow" onclick="changeImage(-1)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
+            </svg>
+        </div>
+    </div>
+
+    <div class="position-absolute top-50 end-0 translate-middle-y me-3" style="cursor: pointer; z-index: 100;">
+        <div class="arrow-right bg-white p-2 rounded-circle shadow" onclick="changeImage(1)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+        </div>
     </div>
 </div>
 
-<div class="container-fluid px-0">
-    <div class="full-width-image">
-        <img src="~/Image/Главное2.png" alt="Владимирский химический завод. О нас" class="img-fluid w-100">
+<div class="container-fluid px-0 mt-4 mb-5">
+    <div class="why-us-container py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Почему мы</h2>
+
+            <div class="row justify-content-center">
+                <!-- Пункт 1 -->
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="why-us-item d-flex align-items-start">
+                        <div class="why-us-icon me-3">
+                            <i class="fas fa-history fa-2x"></i>
+                        </div>
+                        <div>
+                            <h4>Производственное направление с 1931 года</h4>
+                            <p>Более 90 лет опыта в химической промышленности</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Пункт 2 -->
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="why-us-item d-flex align-items-start">
+                        <div class="why-us-icon me-3">
+                            <i class="fas fa-check-circle fa-2x"></i>
+                        </div>
+                        <div>
+                            <h4>100% входной контроль качества сырья</h4>
+                            <p>Только проверенные материалы для производства</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Пункт 3 -->
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="why-us-item d-flex align-items-start">
+                        <div class="why-us-icon me-3">
+                            <i class="fas fa-shield-alt fa-2x"></i>
+                        </div>
+                        <div>
+                            <h4>Гарантия на заявленные свойства</h4>
+                            <p>Рекомендации по применению каждого материала</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Пункт 4 -->
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="why-us-item d-flex align-items-start">
+                        <div class="why-us-icon me-3">
+                            <i class="fas fa-flask fa-2x"></i>
+                        </div>
+                        <div>
+                            <h4>Непрерывная научная работа</h4>
+                            <p>Постоянное улучшение потребительских свойств</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Пункт 5 -->
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="why-us-item d-flex align-items-start">
+                        <div class="why-us-icon me-3">
+                            <i class="fas fa-leaf fa-2x"></i>
+                        </div>
+                        <div>
+                            <h4>Высокий уровень экологичности</h4>
+                            <p>Безопасные для окружающей среды технологии</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Пункт 6 -->
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="why-us-item d-flex align-items-start">
+                        <div class="why-us-icon me-3">
+                            <i class="fas fa-graduation-cap fa-2x"></i>
+                        </div>
+                        <div>
+                            <h4>Инвестиции в научное развитие</h4>
+                            <p>Поддержка исследований и инноваций</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+@section Scripts {
+    <script src="~/js/imageSlider.js"></script>
+}

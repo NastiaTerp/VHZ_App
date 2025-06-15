@@ -1,0 +1,66 @@
+﻿body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+}
+
+.logo {
+    width: 300px;
+    margin-bottom: 20px;
+}
+
+.register-wrapper {
+    display: flex;
+    height: 100vh;
+}
+
+.left-panel {
+    background-color: #f2f3f8;
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+    .left-panel .subtitle {
+        color: #5A5ABF;
+        font-weight: 600;
+        font-size: 18px;
+        text-align: center;
+    }
+
+.right-panel {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem 4rem;
+}
+
+    .right-panel h2 {
+        font-weight: 700;
+    }
+
+    .right-panel p {
+        margin-bottom: 2rem;
+        color: #444;
+    }
+
+.form-control {
+    border-radius: 6px;
+    height: 45px;
+}
+
+.form-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 2rem;
+}
+
+.footer-text {
+    font-size: 14px;
+    color: #777;
+    margin-top: auto;
+    text-align: center;
+}

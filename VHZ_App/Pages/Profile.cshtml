@@ -1,0 +1,43 @@
+﻿@page
+@model VHZ_App.Pages.ProfileModel
+@{
+    ViewData["Title"] = "Профиль";
+}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"]</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/profile.css" />
+</head>
+<body>
+    <div class="register-wrapper">
+        <div class="left-panel">
+            <img src="/Image/logo.svg" alt="Логотип" class="logo" />
+        </div>
+
+        <div class="right-panel">
+            <h2>Личный кабинет</h2>
+            <p>Добро пожаловать, @Model.User.Name!</p>
+
+            <div class="form-section">
+                <input class="form-control" readonly value="@Model.User.Surname" placeholder="Фамилия" />
+                <input class="form-control" readonly value="@Model.User.Name" placeholder="Имя" />
+                <input class="form-control" readonly value="@Model.User.Pathronimic" placeholder="Отчество" />
+                <input class="form-control" readonly value="@Model.User.NameCompany" placeholder="Компания" />
+                <input class="form-control" readonly value="@Model.User.Inn" placeholder="ИНН" />
+                <input class="form-control" readonly value="@Model.User.Kpp" placeholder="КПП" />
+                <input class="form-control" readonly value="@Model.User.Post" placeholder="Должность" />
+                <input class="form-control" readonly value="@Model.User.Email" placeholder="Почта" />
+                <input class="form-control" readonly value="@Model.User.ContactNumber" placeholder="Телефон" />
+                <input class="form-control" readonly value="@Model.User.Login" placeholder="Логин" />
+                <input class="form-control" readonly value="@Model.User.Role" placeholder="Роль" />
+            </div>
+
+            <a href="/Logout" class="btn btn-outline-danger mt-3">Выйти</a>
+        </div>
+    </div>
+</body>
+</html>

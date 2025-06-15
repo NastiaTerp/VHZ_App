@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using VHZ_App.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.Configure<SmtpSettings>(builder.Configuration.GetSection("Smtp"));
 
 // Add services to the container.
 builder.Services.AddRazorPages();

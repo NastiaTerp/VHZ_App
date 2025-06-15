@@ -282,6 +282,7 @@ public partial class VhzContext : DbContext
 
         OnModelCreatingPartial(modelBuilder);
     }
+    public DbSet<PasswordResetToken> PasswordResetTokens { get; set; }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }

@@ -1,15 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
-namespace VHZ_App.Models;
-
-public partial class Contact
+namespace VHZ_App.Models
 {
-    public int IdContact { get; set; }
+    public partial class Contact
+    {
+        public int IdContact { get; set; }
 
-    public string Email { get; set; } = null!;
+        [Display(Name = "Email")]
+        public string? Email { get; set; }  // Изменено на nullable
 
-    public string NameContact { get; set; } = null!;
+        [Display(Name = "Имя контакта")]
+        public string? NameContact { get; set; }  // Изменено на nullable
 
-    public string NumberPhone { get; set; } = null!;
+        [Display(Name = "Телефон")]
+        public string? NumberPhone { get; set; }  // Изменено на nullable
+    }
 }

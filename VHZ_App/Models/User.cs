@@ -29,8 +29,6 @@ public partial class User
 
     public string? Post { get; set; }
 
-    public string Role { get; set; } = null!;
-
     public virtual ICollection<BankCard> BankCards { get; set; } = new List<BankCard>();
 
     public virtual ICollection<Order> Orders { get; set; } = new List<Order>();

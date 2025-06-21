@@ -113,7 +113,66 @@
         </div>
     </div>
 </div>
+<div class="container my-5">
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow">
+                <div class="card-body p-5">
+                    <h2 class="text-center mb-4">Обратная связь</h2>
+                    <form method="post" id="feedbackForm">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Feedback.Name" class="form-label">Ваше имя</label>
+                                <input asp-for="Feedback.Name" class="form-control" required>
+                                <span asp-validation-for="Feedback.Name" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Feedback.Email" class="form-label">Email</label>
+                                <input asp-for="Feedback.Email" class="form-control" required>
+                                <span asp-validation-for="Feedback.Email" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Feedback.Phone" class="form-label">Телефон</label>
+                            <input asp-for="Feedback.Phone" class="form-control">
+                            <span asp-validation-for="Feedback.Phone" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Feedback.Subject" class="form-label">Тема сообщения</label>
+                            <select asp-for="Feedback.Subject" class="form-select" required>
+                                <option value="" selected disabled>Выберите тему</option>
+                                <option value="Вопрос о продукции">Вопрос о продукции</option>
+                                <option value="Сотрудничество">Сотрудничество</option>
+                                <option value="Техническая поддержка">Техническая поддержка</option>
+                                <option value="Другое">Другое</option>
+                            </select>
+                            <span asp-validation-for="Feedback.Subject" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Feedback.Message" class="form-label">Сообщение</label>
+                            <textarea asp-for="Feedback.Message" class="form-control" rows="4" required></textarea>
+                            <span asp-validation-for="Feedback.Message" class="text-danger"></span>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg btn-vhz">Отправить сообщение</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 @section Scripts {
+    <partial name="_ValidationScriptsPartial" />
     <script src="~/js/imageSlider.js"></script>
 }

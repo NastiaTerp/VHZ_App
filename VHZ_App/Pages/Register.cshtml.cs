@@ -110,7 +110,6 @@ namespace VHZ_App.Pages
                 Email = email.Trim(),
                 Login = login.Trim(),
                 Post = string.IsNullOrWhiteSpace(post) ? null : post.Trim(),
-                Role = "Администратор"
             };
 
             user.Password = hasher.HashPassword(user, password);

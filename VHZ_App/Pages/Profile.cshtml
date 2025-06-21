@@ -1,43 +1,115 @@
 ﻿@page
 @model VHZ_App.Pages.ProfileModel
 @{
-    ViewData["Title"] = "Профиль";
+    ViewData["Title"] = "Личный кабинет";
+    Layout = "_Layout";
 }
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="utf-8" />
-    <title>@ViewData["Title"]</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+@section Styles {
     <link rel="stylesheet" href="~/css/profile.css" />
-</head>
-<body>
-    <div class="register-wrapper">
-        <div class="left-panel">
-            <img src="/Image/logo.svg" alt="Логотип" class="logo" />
+}
+
+<div class="profile-wrapper">
+    <!-- Sidebar -->
+    <div class="sidebar text-center">
+        <img src="@Model.GetAvatarPath()" alt="Аватар" />
+        <h4>@($"{Model.User.Surname} {Model.User.Name} {(string.IsNullOrEmpty(Model.User.Pathronimic) ? "" : Model.User.Pathronimic)}")</h4>
+        <hr />
+        <a class="btn btn-edit w-100 mb-3" href="/EditProfile">Редактировать</a>
+        <a class="btn btn-outline-danger w-100 logout-btn" href="/Logout">Выйти</a>
+    </div>
+
+    <!-- Main content -->
+    <div class="main-content">
+        <!-- Контактные данные -->
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Контактная информация</h5>
+            </div>
+            <div class="info-row">
+                <div class="info-block"><label>Телефон</label><div>@Model.User.ContactNumber</div></div>
+                <div class="info-block"><label>Email</label><div>@Model.User.Email</div></div>
+                <div class="info-block"><label>Логин</label><div>@Model.User.Login</div></div>
+            </div>
         </div>
 
-        <div class="right-panel">
-            <h2>Личный кабинет</h2>
-            <p>Добро пожаловать, @Model.User.Name!</p>
-
-            <div class="form-section">
-                <input class="form-control" readonly value="@Model.User.Surname" placeholder="Фамилия" />
-                <input class="form-control" readonly value="@Model.User.Name" placeholder="Имя" />
-                <input class="form-control" readonly value="@Model.User.Pathronimic" placeholder="Отчество" />
-                <input class="form-control" readonly value="@Model.User.NameCompany" placeholder="Компания" />
-                <input class="form-control" readonly value="@Model.User.Inn" placeholder="ИНН" />
-                <input class="form-control" readonly value="@Model.User.Kpp" placeholder="КПП" />
-                <input class="form-control" readonly value="@Model.User.Post" placeholder="Должность" />
-                <input class="form-control" readonly value="@Model.User.Email" placeholder="Почта" />
-                <input class="form-control" readonly value="@Model.User.ContactNumber" placeholder="Телефон" />
-                <input class="form-control" readonly value="@Model.User.Login" placeholder="Логин" />
-                <input class="form-control" readonly value="@Model.User.Role" placeholder="Роль" />
+        <!-- Данные компании -->
+        <div class="card">
+            <h5>Компания</h5>
+            <div class="info-row">
+                <div class="info-block"><label>Название</label><div>@Model.User.NameCompany</div></div>
+                <div class="info-block"><label>ИНН</label><div>@Model.User.Inn</div></div>
+                <div class="info-block"><label>КПП</label><div>@Model.User.Kpp</div></div>
+                <div class="info-block"><label>Должность</label><div>@Model.User.Post</div></div>
             </div>
+        </div>
 
-            <a href="/Logout" class="btn btn-outline-danger mt-3">Выйти</a>
+        <!-- Банковская карта -->
+        @if (Model.BankCard != null)
+        {
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Банковская карта</h5>
+                    <form method="post" asp-page-handler="DeleteCard" onsubmit="return confirm('Вы уверены, что хотите удалить банковскую карту?');">
+                        <button type="submit" class="btn btn-sm btn-outline-danger">Удалить</button>
+                    </form>
+                </div>
+                <div class="card-body">
+                    <div class="info-row">
+                        <div class="info-block"><label>Номер карты</label><div>**** **** **** @Model.BankCard.CardNumber[^4..]</div></div>
+                        <div class="info-block"><label>Срок действия</label><div>@Model.BankCard.ValidityPeriod</div></div>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="card text-center">
+                <div class="card-body">
+                    <a href="/AddBankCard" class="btn btn-primary">Добавить банковскую карту</a>
+                </div>
+            </div>
+        }
+
+        <!-- История заказов -->
+        <div class="card">
+            <h5>Последние заказы</h5>
+            @if (Model.Orders.Any())
+            {
+                <table class="table table-sm table-bordered mt-2">
+                    <thead class="table-light">
+                        <tr>
+                            <th>ID</th>
+                            <th>Метод доставки</th>
+                            <th>Адрес</th>
+                            <th>Сумма</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var order in Model.Orders)
+                        {
+                            <tr>
+                                <td>@order.IdOrder</td>
+                                <td>@order.DeliveryMethod</td>
+                                <td>@(order.Street ?? "") @(order.House ?? "")</td>
+                                <td>@order.TotalPrice ₽</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <p class="text-muted">Вы ещё не совершали заказов.</p>
+            }
+        </div>
+
+        <!-- Раздел безопасности -->
+        <div class="card">
+            <h5>Безопасность</h5>
+            <div>
+                <a href="/ForgotPassword" class="btn btn-outline-secondary me-2">Сменить пароль</a>
+            </div>
         </div>
     </div>
-</body>
-</html>
+</div>

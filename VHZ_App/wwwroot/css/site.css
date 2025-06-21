@@ -46,19 +46,21 @@
 
 /* Base Styles */
 html {
-    font-size: 14px;
     position: relative;
     min-height: 100%;
-    min-width: 320px;
 }
 
 body {
     margin: 0;
-    padding-bottom: 120px;
+    padding-bottom: 180px; /* Высота футера + отступ */
     min-height: 100vh;
-    position: relative;
+    display: flex;
+    flex-direction: column;
 }
-
+.container {
+    flex: 1;
+    padding-bottom: 20px; /* Дополнительный отступ */
+}
 /* Header Styles */
 header {
     position: sticky;
@@ -95,7 +97,6 @@ header {
     width: 100%;
     height: auto;
     background-color: #DCD1FF;
-    padding: 1rem 0;
 }
 
 .footer-logo-img {
@@ -103,6 +104,7 @@ header {
     width: auto;
     transition: all 0.3s ease;
 }
+
 
 /* Image Container Styles */
 .image-container {
@@ -168,3 +170,31 @@ header {
         display: block;
     }
 }
+/* Стили для формы обратной связи */
+.feedback-card {
+    border-radius: 10px;
+    border: none;
+}
+
+    .feedback-card .card-body {
+        background-color: #6f42c1;
+    }
+
+    .feedback-card label {
+        font-weight: 500;
+        color: #6f42c1;
+    }
+
+    .feedback-card textarea {
+        min-height: 150px;
+        resize: vertical;
+    }
+.btn-vhz {
+    background-color: #3401BB !important;
+    border-color: #3401BB !important;
+}
+
+    .btn-vhz:hover {
+        background-color: #1c0260 !important;
+        border-color: #1c0260 !important;
+    }

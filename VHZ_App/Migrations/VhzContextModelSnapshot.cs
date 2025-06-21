@@ -60,7 +60,7 @@ namespace VHZ_App.Migrations
 
                     b.HasKey("IdBankCard");
 
-                    b.HasIndex("IdUser");
+                    b.HasIndex(new[] { "IdUser" }, "IX_Bank_card_id_user");
 
                     b.ToTable("Bank_card", (string)null);
                 });
@@ -88,9 +88,9 @@ namespace VHZ_App.Migrations
 
                     b.HasKey("IdCart");
 
-                    b.HasIndex("IdOrder");
+                    b.HasIndex(new[] { "IdOrder" }, "IX_Cart_id_order");
 
-                    b.HasIndex("IdProduct");
+                    b.HasIndex(new[] { "IdProduct" }, "IX_Cart_id_product");
 
                     b.ToTable("Cart", (string)null);
                 });
@@ -209,7 +209,7 @@ namespace VHZ_App.Migrations
 
                     b.HasKey("IdOrder");
 
-                    b.HasIndex("IdUser");
+                    b.HasIndex(new[] { "IdUser" }, "IX_Order_id_user");
 
                     b.ToTable("Order", (string)null);
                 });
@@ -326,7 +326,7 @@ namespace VHZ_App.Migrations
 
                     b.HasKey("IdTechnicalSpecifications");
 
-                    b.HasIndex("IdProduct");
+                    b.HasIndex(new[] { "IdProduct" }, "IX_Technical_specifications_id_product");
 
                     b.ToTable("Technical_specifications", (string)null);
                 });
@@ -342,8 +342,8 @@ namespace VHZ_App.Migrations
 
                     b.Property<string>("ContactNumber")
                         .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nchar(10)")
+                        .HasMaxLength(11)
+                        .HasColumnType("nchar(11)")
                         .HasColumnName("contact_number")
                         .IsFixedLength();
 
@@ -391,9 +391,9 @@ namespace VHZ_App.Migrations
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasMaxLength(50)
+                        .HasMaxLength(500)
                         .IsUnicode(false)
-                        .HasColumnType("varchar(50)")
+                        .HasColumnType("varchar(500)")
                         .HasColumnName("password");
 
                     b.Property<string>("Pathronimic")
@@ -407,13 +407,6 @@ namespace VHZ_App.Migrations
                         .IsUnicode(false)
                         .HasColumnType("varchar(50)")
                         .HasColumnName("post");
-
-                    b.Property<string>("Role")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(50)")
-                        .HasColumnName("role");
 
                     b.Property<string>("Surname")
                         .IsRequired()

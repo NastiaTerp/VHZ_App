@@ -3,7 +3,9 @@ using VHZ_App.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.Configure<SmtpSettings>(builder.Configuration.GetSection("Smtp"));
-
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole(); // Вывод в консоль
+builder.Logging.AddDebug();
 // Add services to the container.
 builder.Services.AddRazorPages();
 

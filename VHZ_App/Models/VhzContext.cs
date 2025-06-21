@@ -25,6 +25,8 @@ public partial class VhzContext : DbContext
 
     public virtual DbSet<Order> Orders { get; set; }
 
+    public virtual DbSet<PasswordResetToken> PasswordResetTokens { get; set; }
+
     public virtual DbSet<Product> Products { get; set; }
 
     public virtual DbSet<TechnicalSpecification> TechnicalSpecifications { get; set; }
@@ -42,6 +44,8 @@ public partial class VhzContext : DbContext
             entity.HasKey(e => e.IdBankCard);
 
             entity.ToTable("Bank_card");
+
+            entity.HasIndex(e => e.IdUser, "IX_Bank_card_id_user");
 
             entity.Property(e => e.IdBankCard).HasColumnName("id_bank_card");
             entity.Property(e => e.CardNumber)
@@ -71,6 +75,10 @@ public partial class VhzContext : DbContext
             entity.HasKey(e => e.IdCart);
 
             entity.ToTable("Cart");
+
+            entity.HasIndex(e => e.IdOrder, "IX_Cart_id_order");
+
+            entity.HasIndex(e => e.IdProduct, "IX_Cart_id_product");
 
             entity.Property(e => e.IdCart).HasColumnName("id_cart");
             entity.Property(e => e.AmountProducts).HasColumnName("amount_products");
@@ -129,6 +137,8 @@ public partial class VhzContext : DbContext
             entity.HasKey(e => e.IdOrder);
 
             entity.ToTable("Order");
+
+            entity.HasIndex(e => e.IdUser, "IX_Order_id_user");
 
             entity.Property(e => e.IdOrder).HasColumnName("id_order");
             entity.Property(e => e.Area)
@@ -204,6 +214,8 @@ public partial class VhzContext : DbContext
 
             entity.ToTable("Technical_specifications");
 
+            entity.HasIndex(e => e.IdProduct, "IX_Technical_specifications_id_product");
+
             entity.Property(e => e.IdTechnicalSpecifications).HasColumnName("id_technical_specifications");
             entity.Property(e => e.IdProduct).HasColumnName("id_product");
             entity.Property(e => e.NameIndicator)
@@ -229,7 +241,7 @@ public partial class VhzContext : DbContext
 
             entity.Property(e => e.IdUser).HasColumnName("id_user");
             entity.Property(e => e.ContactNumber)
-                .HasMaxLength(10)
+                .HasMaxLength(11)
                 .IsFixedLength()
                 .HasColumnName("contact_number");
             entity.Property(e => e.Email)
@@ -259,7 +271,7 @@ public partial class VhzContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("name_company");
             entity.Property(e => e.Password)
-                .HasMaxLength(50)
+                .HasMaxLength(500)
                 .IsUnicode(false)
                 .HasColumnName("password");
             entity.Property(e => e.Pathronimic)
@@ -270,10 +282,6 @@ public partial class VhzContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("post");
-            entity.Property(e => e.Role)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("role");
             entity.Property(e => e.Surname)
                 .HasMaxLength(50)
                 .IsUnicode(false)
@@ -282,7 +290,6 @@ public partial class VhzContext : DbContext
 
         OnModelCreatingPartial(modelBuilder);
     }
-    public DbSet<PasswordResetToken> PasswordResetTokens { get; set; }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }

@@ -8,7 +8,10 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/VHZ_App.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+    @RenderSection("Styles", required: false)
 </head>
+
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm" style="background-color: #DCD1FF;">
@@ -54,9 +57,6 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" asp-page="/Contacts">КОНТАКТЫ</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-page="/Research">ИССЛЕДОВАНИЯ</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" asp-page="/Account">АККАУНТ</a>

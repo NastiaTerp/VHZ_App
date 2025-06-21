@@ -5,7 +5,7 @@
 namespace VHZ_App.Migrations
 {
     /// <inheritdoc />
-    public partial class AddPasswordResetTokens : Migration
+    public partial class FixCvvCvcLength : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

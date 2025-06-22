@@ -191,3 +191,71 @@
         flex: 1 1 100%;
     }
 }
+.bank-cards-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.bank-card-item {
+    padding: 1rem;
+    border: 1px solid #dee2e6;
+    border-radius: 0.5rem;
+    background-color: #f8f9fa;
+}
+
+    .bank-card-item.default-card {
+        border: 2px solid #6a0dad;
+        background-color: #f3e9ff;
+    }
+
+.card-info {
+    margin-bottom: 1rem;
+}
+
+.card-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+    .card-actions form {
+        margin: 0;
+    }
+/* Основные стили для фиолетовых кнопок */
+.btn-primary,
+.btn-primary:active,
+.btn-primary:focus {
+    background-color: #6a0dad !important;
+    border-color: #6a0dad !important;
+}
+
+    .btn-primary:hover {
+        background-color: #4d0a8f !important;
+        border-color: #4d0a8f !important;
+    }
+
+/* Стили для outline-кнопки */
+.btn-outline-primary {
+    color: #6a0dad;
+    border-color: #6a0dad;
+}
+
+    .btn-outline-primary:hover,
+    .btn-outline-primary:active,
+    .btn-outline-primary:focus {
+        background-color: #6a0dad !important;
+        border-color: #6a0dad;
+        color: white !important;
+    }
+
+/* Стили для активной/нажатой кнопки */
+.btn-primary:not(:disabled):not(.disabled):active,
+.btn-primary:not(:disabled):not(.disabled).active {
+    background-color: #4d0a8f !important;
+    border-color: #3a0769 !important;
+    box-shadow: 0 0 0 0.2rem rgba(106, 13, 173, 0.5) !important;
+}
+
+/* Фиолетовый бейдж */
+.badge.bg-primary {
+    background-color: #6a0dad !important;
+}

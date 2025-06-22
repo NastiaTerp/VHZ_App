@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace VHZ_App.Models
 {
@@ -8,12 +9,13 @@ namespace VHZ_App.Models
         public int IdContact { get; set; }
 
         [Display(Name = "Email")]
-        public string? Email { get; set; }  // Изменено на nullable
+        public string? Email { get; set; } 
 
         [Display(Name = "Имя контакта")]
-        public string? NameContact { get; set; }  // Изменено на nullable
+        public string? NameContact { get; set; }
 
         [Display(Name = "Телефон")]
-        public string? NumberPhone { get; set; }  // Изменено на nullable
+        [Column(TypeName = "varchar(50)")]
+        public string? NumberPhone { get; set; }
     }
 }

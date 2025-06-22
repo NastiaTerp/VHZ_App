@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Security.Cryptography;
 using System.Text;
-
-namespace VHZ_App.Models;
+using VHZ_App.Models;
 
 public partial class BankCard
 {
@@ -19,9 +16,14 @@ public partial class BankCard
 
     public string CardNumber { get; set; } = null!;
 
+    [StringLength(100)]
+    public string BankName { get; set; } = null!; // Новое поле для названия банка
+
+    public bool IsDefault { get; set; } // Поле для основной карты
+
     public virtual User IdUserNavigation { get; set; } = null!;
 
-    // Метод для безопасного получения CVV (только при необходимости)
+    // Метод для безопасного получения CVV
     public string GetDecryptedCvv(string encryptionKey)
     {
         try
@@ -47,7 +49,6 @@ public partial class BankCard
         }
         catch
         {
-            // В случае ошибки дешифрования возвращаем пустую строку
             return string.Empty;
         }
     }

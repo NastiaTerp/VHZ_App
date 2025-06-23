@@ -22,7 +22,7 @@ namespace VHZ_App.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("BankCard", b =>
+            modelBuilder.Entity("VHZ_App.Models.BankCard", b =>
                 {
                     b.Property<int>("IdBankCard")
                         .ValueGeneratedOnAdd()
@@ -33,23 +33,23 @@ namespace VHZ_App.Migrations
 
                     b.Property<string>("BankName")
                         .IsRequired()
+                        .ValueGeneratedOnAdd()
                         .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(100)")
+                        .HasDefaultValue("");
 
                     b.Property<string>("CardNumber")
                         .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nchar(10)")
-                        .HasColumnName("card_number")
-                        .IsFixedLength();
+                        .HasMaxLength(19)
+                        .HasColumnType("nvarchar(19)")
+                        .HasColumnName("card_number");
 
                     b.Property<string>("CvvCvc")
                         .IsRequired()
-                        .HasMaxLength(3)
+                        .HasMaxLength(60)
                         .IsUnicode(false)
-                        .HasColumnType("char(3)")
-                        .HasColumnName("cvv_cvc")
-                        .IsFixedLength();
+                        .HasColumnType("varchar(60)")
+                        .HasColumnName("cvv_cvc");
 
                     b.Property<int>("IdUser")
                         .HasColumnType("int")
@@ -94,7 +94,13 @@ namespace VHZ_App.Migrations
                         .HasColumnType("int")
                         .HasColumnName("id_product");
 
+                    b.Property<int>("IdUser")
+                        .HasColumnType("int")
+                        .HasColumnName("id_user");
+
                     b.HasKey("IdCart");
+
+                    b.HasIndex("IdUser");
 
                     b.HasIndex(new[] { "IdOrder" }, "IX_Cart_id_order");
 
@@ -119,17 +125,17 @@ namespace VHZ_App.Migrations
                         .HasColumnName("email");
 
                     b.Property<string>("NameContact")
-                        .HasMaxLength(50)
+                        .IsRequired()
+                        .HasMaxLength(200)
                         .IsUnicode(false)
-                        .HasColumnType("varchar(50)")
+                        .HasColumnType("varchar(200)")
                         .HasColumnName("name_contact");
 
                     b.Property<string>("NumberPhone")
-                        .HasMaxLength(11)
+                        .HasMaxLength(50)
                         .IsUnicode(false)
                         .HasColumnType("varchar(50)")
-                        .HasColumnName("number_phone")
-                        .IsFixedLength();
+                        .HasColumnName("number_phone");
 
                     b.HasKey("IdContact");
 
@@ -192,6 +198,10 @@ namespace VHZ_App.Migrations
                         .HasColumnType("varchar(50)")
                         .HasColumnName("house");
 
+                    b.Property<int>("IdBankCard")
+                        .HasColumnType("int")
+                        .HasColumnName("id_bank_card");
+
                     b.Property<int>("IdUser")
                         .HasColumnType("int")
                         .HasColumnName("id_user");
@@ -213,6 +223,8 @@ namespace VHZ_App.Migrations
                         .HasColumnName("total_price");
 
                     b.HasKey("IdOrder");
+
+                    b.HasIndex("IdBankCard");
 
                     b.HasIndex(new[] { "IdUser" }, "IX_Order_id_user");
 
@@ -262,7 +274,7 @@ namespace VHZ_App.Migrations
                         .IsRequired()
                         .HasMaxLength(500)
                         .IsUnicode(false)
-                        .HasColumnType("varchar(500)")
+                        .HasColumnType("varchar(5000)")
                         .HasColumnName("description_product");
 
                     b.Property<string>("Image")
@@ -425,7 +437,7 @@ namespace VHZ_App.Migrations
                     b.ToTable("User", (string)null);
                 });
 
-            modelBuilder.Entity("BankCard", b =>
+            modelBuilder.Entity("VHZ_App.Models.BankCard", b =>
                 {
                     b.HasOne("VHZ_App.Models.User", "IdUserNavigation")
                         .WithMany("BankCards")
@@ -449,20 +461,28 @@ namespace VHZ_App.Migrations
                         .IsRequired()
                         .HasConstraintName("FK_Cart_Product");
 
+                    b.HasOne("VHZ_App.Models.User", "IdUserNavigation")
+                        .WithMany("Carts")
+                        .HasForeignKey("IdUser")
+                        .IsRequired()
+                        .HasConstraintName("FK_Cart_User");
+
                     b.Navigation("IdOrderNavigation");
 
                     b.Navigation("IdProductNavigation");
+
+                    b.Navigation("IdUserNavigation");
                 });
 
             modelBuilder.Entity("VHZ_App.Models.Order", b =>
                 {
-                    b.HasOne("VHZ_App.Models.User", "IdUserNavigation")
+                    b.HasOne("VHZ_App.Models.BankCard", "IdBankCardNavigation")
                         .WithMany("Orders")
-                        .HasForeignKey("IdUser")
+                        .HasForeignKey("IdBankCard")
                         .IsRequired()
-                        .HasConstraintName("FK_Order_User");
+                        .HasConstraintName("FK_Order_Bank_card");
 
-                    b.Navigation("IdUserNavigation");
+                    b.Navigation("IdBankCardNavigation");
                 });
 
             modelBuilder.Entity("VHZ_App.Models.TechnicalSpecification", b =>
@@ -474,6 +494,11 @@ namespace VHZ_App.Migrations
                         .HasConstraintName("FK_Technical_specifications_Product");
 
                     b.Navigation("IdProductNavigation");
+                });
+
+            modelBuilder.Entity("VHZ_App.Models.BankCard", b =>
+                {
+                    b.Navigation("Orders");
                 });
 
             modelBuilder.Entity("VHZ_App.Models.Order", b =>
@@ -492,7 +517,7 @@ namespace VHZ_App.Migrations
                 {
                     b.Navigation("BankCards");
 
-                    b.Navigation("Orders");
+                    b.Navigation("Carts");
                 });
 #pragma warning restore 612, 618
         }

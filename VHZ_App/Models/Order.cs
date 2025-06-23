@@ -9,6 +9,8 @@ public partial class Order
 
     public int IdUser { get; set; }
 
+    public int IdBankCard { get; set; }
+
     public string DeliveryMethod { get; set; } = null!;
 
     public string? Area { get; set; }
@@ -23,5 +25,5 @@ public partial class Order
 
     public virtual ICollection<Cart> Carts { get; set; } = new List<Cart>();
 
-    public virtual User IdUserNavigation { get; set; } = null!;
+    public virtual BankCard IdBankCardNavigation { get; set; } = null!;
 }

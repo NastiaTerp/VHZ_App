@@ -31,5 +31,5 @@ public partial class User
 
     public virtual ICollection<BankCard> BankCards { get; set; } = new List<BankCard>();
 
-    public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
+    public virtual ICollection<Cart> Carts { get; set; } = new List<Cart>();
 }

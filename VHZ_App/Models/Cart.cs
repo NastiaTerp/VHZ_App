@@ -11,9 +11,13 @@ public partial class Cart
 
     public int? IdOrder { get; set; }
 
+    public int IdUser { get; set; }
+
     public int AmountProducts { get; set; }
 
     public virtual Order? IdOrderNavigation { get; set; }
 
     public virtual Product IdProductNavigation { get; set; } = null!;
+
+    public virtual User IdUserNavigation { get; set; } = null!;
 }

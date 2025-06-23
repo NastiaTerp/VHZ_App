@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace VHZ_App.Models;
 
@@ -18,7 +19,7 @@ public partial class Product
     public string ProductCompliance { get; set; } = null!;
 
     public string Type { get; set; } = null!;
-
+    [Column(TypeName = "varchar(5000)")]
     public string DescriptionProduct { get; set; } = null!;
 
     public virtual ICollection<Cart> Carts { get; set; } = new List<Cart>();

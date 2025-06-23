@@ -1,21 +1,15 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
 
-namespace VHZ_App.Models
+namespace VHZ_App.Models;
+
+public partial class Contact
 {
-    public partial class Contact
-    {
-        public int IdContact { get; set; }
+    public int IdContact { get; set; }
 
-        [Display(Name = "Email")]
-        public string? Email { get; set; } 
+    public string? Email { get; set; }
 
-        [Display(Name = "Имя контакта")]
-        public string? NameContact { get; set; }
+    public string NameContact { get; set; } = null!;
 
-        [Display(Name = "Телефон")]
-        [Column(TypeName = "varchar(50)")]
-        public string? NumberPhone { get; set; }
-    }
+    public string? NumberPhone { get; set; }
 }

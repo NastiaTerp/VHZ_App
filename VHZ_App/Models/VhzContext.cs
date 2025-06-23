@@ -48,14 +48,15 @@ public partial class VhzContext : DbContext
             entity.HasIndex(e => e.IdUser, "IX_Bank_card_id_user");
 
             entity.Property(e => e.IdBankCard).HasColumnName("id_bank_card");
+            entity.Property(e => e.BankName)
+                .HasMaxLength(100)
+                .HasDefaultValue("");
             entity.Property(e => e.CardNumber)
-                .HasMaxLength(10)
-                .IsFixedLength()
+                .HasMaxLength(19)
                 .HasColumnName("card_number");
             entity.Property(e => e.CvvCvc)
-                .HasMaxLength(3)
+                .HasMaxLength(60)
                 .IsUnicode(false)
-                .IsFixedLength()
                 .HasColumnName("cvv_cvc");
             entity.Property(e => e.IdUser).HasColumnName("id_user");
             entity.Property(e => e.ValidityPeriod)
@@ -84,6 +85,7 @@ public partial class VhzContext : DbContext
             entity.Property(e => e.AmountProducts).HasColumnName("amount_products");
             entity.Property(e => e.IdOrder).HasColumnName("id_order");
             entity.Property(e => e.IdProduct).HasColumnName("id_product");
+            entity.Property(e => e.IdUser).HasColumnName("id_user");
 
             entity.HasOne(d => d.IdOrderNavigation).WithMany(p => p.Carts)
                 .HasForeignKey(d => d.IdOrder)
@@ -93,6 +95,11 @@ public partial class VhzContext : DbContext
                 .HasForeignKey(d => d.IdProduct)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Cart_Product");
+
+            entity.HasOne(d => d.IdUserNavigation).WithMany(p => p.Carts)
+                .HasForeignKey(d => d.IdUser)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Cart_User");
         });
 
         modelBuilder.Entity<Contact>(entity =>
@@ -107,13 +114,12 @@ public partial class VhzContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("email");
             entity.Property(e => e.NameContact)
-                .HasMaxLength(50)
+                .HasMaxLength(200)
                 .IsUnicode(false)
                 .HasColumnName("name_contact");
             entity.Property(e => e.NumberPhone)
-                .HasMaxLength(11)
+                .HasMaxLength(50)
                 .IsUnicode(false)
-                .IsFixedLength()
                 .HasColumnName("number_phone");
         });
 
@@ -153,6 +159,7 @@ public partial class VhzContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("house");
+            entity.Property(e => e.IdBankCard).HasColumnName("id_bank_card");
             entity.Property(e => e.IdUser).HasColumnName("id_user");
             entity.Property(e => e.Locality)
                 .HasMaxLength(50)
@@ -166,10 +173,10 @@ public partial class VhzContext : DbContext
                 .HasColumnType("money")
                 .HasColumnName("total_price");
 
-            entity.HasOne(d => d.IdUserNavigation).WithMany(p => p.Orders)
-                .HasForeignKey(d => d.IdUser)
+            entity.HasOne(d => d.IdBankCardNavigation).WithMany(p => p.Orders)
+                .HasForeignKey(d => d.IdBankCard)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Order_User");
+                .HasConstraintName("FK_Order_Bank_card");
         });
 
         modelBuilder.Entity<Product>(entity =>

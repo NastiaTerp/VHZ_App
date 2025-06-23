@@ -1,0 +1,39 @@
+﻿@page
+@model CardProductModel
+@{
+    ViewData["Title"] = "Владимирский химический завод";
+}
+<p></p>
+<label class="txt-cart-16">@Model.Product.NameProduct</label>
+<br />
+<label class="txt-cart-14">@Model.Product.Type</label>
+<br />
+<label class="txt-cart-14">@Model.Product.ProductCompliance</label>
+<br />
+<label class="txt-cart-14">@Model.Product.DescriptionProduct</label>
+<br />
+<label class="txt-cart-14">@Model.Product.Appointment</label>
+<br />
+<table class="table-custom .table-bordered">
+    <colgroup>
+        <col width="40%"> <!-- Первый столбец -->
+        <col width="60%"> <!-- Второй столбец -->
+    </colgroup>
+    <thead class="head">
+        <tr>
+            <td>Характеристика</td>
+            <td>Значение</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var spetification in Model.Spetifications)
+        {
+            <tr>
+                <td>@spetification.NameIndicator</td>
+                <td>@spetification.Standard</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<p></p>
+<label class="end-text"></label>

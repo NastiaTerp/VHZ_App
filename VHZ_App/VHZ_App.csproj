@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="wwwroot\Image\Главное.png" />
+    <Content Remove="wwwroot\Image\Главнаое.png" />
     <Content Remove="wwwroot\Image\Главное2.png" />
     <Content Remove="wwwroot\Image\Главное3.png" />
   </ItemGroup>

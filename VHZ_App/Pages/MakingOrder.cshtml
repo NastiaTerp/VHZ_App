@@ -1,0 +1,78 @@
+﻿@page
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@model MakingOrderModel
+@{
+    ViewData["Title"] = "Владимирский химический завод";
+}
+<p class="otstup" />
+<label class="cart-lbl">Оформление заказа</label>
+<p class="otstup" />
+<p class="otstup" />
+<label class="txt-cart-14">Способ получения:</label>
+<br/>
+<input name="delivery" type="radio" value="доставка" class="radio-delivery" />
+<label class="txt-cart-14">Доставка</label>
+<br />
+<input name="delivery" type="radio" value="самовывоз" class="radio-delivery" />
+<label class="txt-cart-14">Самовывоз</label>
+<br />
+<p class="otstup" />
+
+<div id="order-card">
+    <label id="to-making-txt">К офрмлению:</label>
+    <br />
+    <br />
+
+    <label class="product-order txt-cart">Товар</label>
+    <label class="amount-margin txt-cart">1000</label>
+    <label class="amount-sht txt-cart">руб/шт</label>
+    <br />
+    <label class="price-margin txt-cart">1000</label>
+    <label class="sht-margin txt-cart">шт.</label>
+    <label class="amount-margin txt-cart">1000</label>
+    <label class="amount-sht txt-cart">руб</label>
+    <br />
+    <br />
+
+    <label class="product-order txt-cart">Доставка</label>
+    <label class="amount-sht txt-cart">Бесплатно</label>
+    <p />
+    <label class="product-order txt-16">ИТОГО</label>
+    <label class="price-margin txt-16">1000</label>
+    <label class="sht-margin txt-16">шт.</label>
+    <label class="amount-margin txt-16">1000</label>
+    <label class="amount-sht txt-16">руб</label>
+</div>
+<p class="otstup"></p>
+<p></p>
+<label>Укажите адрес:</label>
+<br/>
+<input type="text" placeholder="Адрес" class="addres-input" />
+<p class="otstup"></p>
+<p></p>
+
+<label>Выберите карту:</label>
+<div class="bank-card">
+    <input name="delivery" type="radio" value="доставка" class="radio-bank-card" />
+    <div class="info-card-bank">
+        <label>Банк</label>
+        <br />
+        <label>Номер</label>
+    </div>
+</div>
+<p class="otstup"></p>
+<p></p>
+<button id="btn-cart-oform" onclick="openModal()">Заказать</button>
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <h2>Подтверждение заказа</h2>
+        <p>Вы уверены, что хотите совершить заказ?</p>
+        <div class="d-none d-sm-flex align-items-center div-btn-modal">
+            <button id="btn-making-order" onclick="window.location.href='/Cart'">Заказать</button>
+            <button id="btn-close" onclick="closeModal()">Отменить</button>
+        </div>
+        
+    </div>
+</div>
+<label class="end-text"></label>

@@ -1,0 +1,66 @@
+﻿@page
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@model CatalogModel
+@{
+    ViewData["Title"] = "Владимирский химический завод";
+}
+
+<p/>
+<form method="post" asp-antiforgery="true">
+<div class="container-fluid px-0">
+        <input type="text" placeholder="Поиск" class="found-input" asp-for="foundPole" />
+        <button class="btn-class">Найти</button>
+</div>
+<p />
+</form>
+<div class="container-fluid px-0">
+    <select name="type" id="type-dropdown" class="dropDownList">
+        <option value="usa" class="option-class">Все</option>
+        <option value="usa">1 тип</option>
+        <option value="canada">2 тип</option>
+        <option value="mexico">3 тип</option>
+        <option value="mexico">3 тип</option>
+    </select>
+    <button class="btn-class">Фильтр</button>
+</div>
+<p class="otstup"/>
+@foreach(var product in Model.CatalogProducts)
+{
+    <div class="card-catalog" onclick="window.location.href='/CardProduct.Action("SetProductId", new { idProduct=Model.Id })'">
+        <div class="div-img"></div>
+        <label class="price-kg">Цена за 10кг</label>
+        <p class="lbl-p" />
+        <label class="price">@product.Price.ToString("#.##") руб</label>
+        <p class="lbl-p" />
+        <label class="lbl-catalog">@product.NameProduct</label>
+        <p class="lbl-p" />
+        <label class="lbl-catalog">@product.Appointment</label>
+        <p class="lbl-p" />
+        <label class="lbl-catalog">@product.ProductCompliance</label>
+        <p class="lbl-p" />
+        @* <form method="post">
+            <button class="add-bascket-btn">Добавить в корзину</button>
+        <form method="post"> *@
+    </div>
+    <p class="otstup" />
+}
+
+<div class="card-catalog">
+    <div class="div-img"></div>
+    <label class="price-kg">Цена за 10кг</label>
+    <p class="lbl-p" />
+    <label class="price">1000 руб</label>
+    <p class="lbl-p" />
+    <label class="lbl-catalog">Название</label>
+    <p class="lbl-p" />
+    <label class="lbl-catalog">Назначение</label>
+    <p class="lbl-p" />
+    <label class="lbl-catalog">ГОСТ</label>
+    <p class="lbl-p" />
+    <button class="add-bascket-btn">Добавить в корзину</button>
+    <div></div>
+</div>
+<p></p>
+<label class="end-text"></label>
+
